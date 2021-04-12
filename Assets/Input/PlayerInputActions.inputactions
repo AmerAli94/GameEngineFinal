@@ -52,6 +52,22 @@
                     "expectedControlType": "Button",
                     "processors": "NormalizeVector2",
                     "interactions": "Press"
+                },
+                {
+                    "name": "PrimaryInventoryWeapon",
+                    "type": "Button",
+                    "id": "80c2ec92-b1e5-4449-97ab-d52261ea5999",
+                    "expectedControlType": "Button",
+                    "processors": "NormalizeVector2",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "SecondaryInventoryWeapon",
+                    "type": "Button",
+                    "id": "05c2820c-ea5b-4a35-8e4e-79d42dde804a",
+                    "expectedControlType": "Button",
+                    "processors": "NormalizeVector2",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -162,6 +178,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Reload",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "18b62a25-ae4f-4c27-bfb6-42a4f64b61c1",
+                    "path": "<Keyboard>/1",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimaryInventoryWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d1d18879-7449-4d0c-b66b-fcc599532125",
+                    "path": "<Keyboard>/2",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SecondaryInventoryWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

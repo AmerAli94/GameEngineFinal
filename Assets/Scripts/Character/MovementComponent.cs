@@ -78,6 +78,8 @@ namespace Character
             PlayerRigidbody.AddForce((PlayerTransform.up + MoveDirection) * JumpForce, ForceMode.Impulse);
         }
 
+        
+
         private void Update()
         {
             if (PlayerController.IsJumping) return;

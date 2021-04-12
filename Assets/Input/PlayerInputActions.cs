@@ -65,6 +65,22 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": ""NormalizeVector2"",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""PrimaryInventoryWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""80c2ec92-b1e5-4449-97ab-d52261ea5999"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": ""NormalizeVector2"",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""SecondaryInventoryWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""05c2820c-ea5b-4a35-8e4e-79d42dde804a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": ""NormalizeVector2"",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -177,6 +193,28 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""18b62a25-ae4f-4c27-bfb6-42a4f64b61c1"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrimaryInventoryWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d1d18879-7449-4d0c-b66b-fcc599532125"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SecondaryInventoryWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -208,6 +246,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_PlayerActionMap_Look = m_PlayerActionMap.FindAction("Look", throwIfNotFound: true);
         m_PlayerActionMap_Fire = m_PlayerActionMap.FindAction("Fire", throwIfNotFound: true);
         m_PlayerActionMap_Reload = m_PlayerActionMap.FindAction("Reload", throwIfNotFound: true);
+        m_PlayerActionMap_PrimaryInventoryWeapon = m_PlayerActionMap.FindAction("PrimaryInventoryWeapon", throwIfNotFound: true);
+        m_PlayerActionMap_SecondaryInventoryWeapon = m_PlayerActionMap.FindAction("SecondaryInventoryWeapon", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -263,6 +303,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerActionMap_Look;
     private readonly InputAction m_PlayerActionMap_Fire;
     private readonly InputAction m_PlayerActionMap_Reload;
+    private readonly InputAction m_PlayerActionMap_PrimaryInventoryWeapon;
+    private readonly InputAction m_PlayerActionMap_SecondaryInventoryWeapon;
     public struct PlayerActionMapActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -273,6 +315,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         public InputAction @Look => m_Wrapper.m_PlayerActionMap_Look;
         public InputAction @Fire => m_Wrapper.m_PlayerActionMap_Fire;
         public InputAction @Reload => m_Wrapper.m_PlayerActionMap_Reload;
+        public InputAction @PrimaryInventoryWeapon => m_Wrapper.m_PlayerActionMap_PrimaryInventoryWeapon;
+        public InputAction @SecondaryInventoryWeapon => m_Wrapper.m_PlayerActionMap_SecondaryInventoryWeapon;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActionMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -300,6 +344,12 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Reload.started -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnReload;
                 @Reload.performed -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnReload;
                 @Reload.canceled -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnReload;
+                @PrimaryInventoryWeapon.started -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnPrimaryInventoryWeapon;
+                @PrimaryInventoryWeapon.performed -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnPrimaryInventoryWeapon;
+                @PrimaryInventoryWeapon.canceled -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnPrimaryInventoryWeapon;
+                @SecondaryInventoryWeapon.started -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnSecondaryInventoryWeapon;
+                @SecondaryInventoryWeapon.performed -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnSecondaryInventoryWeapon;
+                @SecondaryInventoryWeapon.canceled -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnSecondaryInventoryWeapon;
             }
             m_Wrapper.m_PlayerActionMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -322,6 +372,12 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Reload.started += instance.OnReload;
                 @Reload.performed += instance.OnReload;
                 @Reload.canceled += instance.OnReload;
+                @PrimaryInventoryWeapon.started += instance.OnPrimaryInventoryWeapon;
+                @PrimaryInventoryWeapon.performed += instance.OnPrimaryInventoryWeapon;
+                @PrimaryInventoryWeapon.canceled += instance.OnPrimaryInventoryWeapon;
+                @SecondaryInventoryWeapon.started += instance.OnSecondaryInventoryWeapon;
+                @SecondaryInventoryWeapon.performed += instance.OnSecondaryInventoryWeapon;
+                @SecondaryInventoryWeapon.canceled += instance.OnSecondaryInventoryWeapon;
             }
         }
     }
@@ -343,5 +399,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
+        void OnPrimaryInventoryWeapon(InputAction.CallbackContext context);
+        void OnSecondaryInventoryWeapon(InputAction.CallbackContext context);
     }
 }

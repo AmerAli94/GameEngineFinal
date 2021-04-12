@@ -12,6 +12,8 @@ namespace Character
         public bool IsReloading;
         public bool IsJumping;
         public bool IsRunning;
+        public bool isSwitchingWeapon;
+
 
     }
 }
