@@ -24,7 +24,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""b63fe715-2cd9-4d81-a4c4-28c8d4cc482b"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press""
                 },
                 {
                     ""name"": ""Jump"",
